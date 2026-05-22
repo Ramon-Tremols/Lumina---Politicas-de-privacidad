@@ -3,225 +3,577 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Política de Privacidad - Lumina</title>
+  <title>Política de Privacidad · Lumina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:#f4f6f9;
-      color:#333;
-      line-height:1.7;
-      padding:40px 20px;
+    :root {
+      --primary:        #2B5CE6;
+      --primary-dark:   #1A3DAE;
+      --primary-light:  #5B8EF0;
+      --accent:         #E8A020;
+      --accent-light:   #FFF3DC;
+      --bg:             #F5F7FF;
+      --surface:        #FFFFFF;
+      --surface-var:    #EEF2FB;
+      --text-primary:   #0D1B3E;
+      --text-secondary: #5A6A8A;
+      --divider:        #DDE4F0;
+      --radius-card:    16px;
+      --radius-sm:      10px;
     }
 
-    .container{
-      max-width:900px;
-      margin:auto;
-      background:white;
-      padding:40px;
-      border-radius:18px;
-      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.65;
+      min-height: 100vh;
     }
 
-    .header{
-      text-align:center;
-      margin-bottom:40px;
+    /* ── Layout ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 64px;
     }
 
-    .header h1{
-      font-size:40px;
-      color:#4b3df0;
-      margin-bottom:10px;
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 20px;
+      padding: 40px 36px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .header p{
-      color:#666;
-      font-size:15px;
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
     }
 
-    h2{
-      color:#4b3df0;
-      margin-top:35px;
-      margin-bottom:15px;
-      font-size:24px;
-      border-left:5px solid #4b3df0;
-      padding-left:12px;
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      right: 40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
     }
 
-    p{
-      margin-bottom:15px;
-      color:#444;
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
     }
 
-    ul{
-      margin-left:25px;
-      margin-bottom:20px;
+    .header-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      backdrop-filter: blur(4px);
     }
 
-    li{
-      margin-bottom:10px;
+    .header-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: #fff;
     }
 
-    .contact-box{
-      background:#f2f3ff;
-      border:1px solid #d7dbff;
-      padding:20px;
-      border-radius:12px;
-      margin-top:20px;
+    .header-text { flex: 1; }
+
+    .header-app-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 4px;
     }
 
-    .footer{
-      text-align:center;
-      margin-top:40px;
-      color:#888;
-      font-size:14px;
+    .header-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
     }
 
-    @media(max-width:768px){
-      .container{
-        padding:25px;
+    .header-subtitle {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(232, 160, 32, 0.25);
+      border: 1px solid rgba(232, 160, 32, 0.4);
+      color: #FFD580;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-top: 14px;
+    }
+
+    .header-badge svg {
+      width: 13px;
+      height: 13px;
+      fill: #FFD580;
+      flex-shrink: 0;
+    }
+
+    /* ── Section cards ── */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--divider);
+      border-radius: var(--radius-card);
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--surface-var);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-title h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .section p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    /* ── List ── */
+    .check-list {
+      list-style: none;
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    .check-list li::before {
+      content: '';
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      background: #EBF1FD;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232B5CE6' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px 12px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Contact box ── */
+    .contact-box {
+      background: var(--accent-light);
+      border: 1px solid rgba(232,160,32,0.3);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-box-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(232,160,32,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-box-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+    }
+
+    .contact-box-text {
+      flex: 1;
+    }
+
+    .contact-box-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #9A6800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 2px;
+    }
+
+    .contact-box-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #5A3800;
+      word-break: break-all;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      height: 1px;
+      background: var(--divider);
+      margin: 20px 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .footer-logo-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-icon svg {
+      width: 15px;
+      height: 15px;
+      fill: #fff;
+    }
+
+    .footer-logo-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page {
+        padding: 24px 16px 48px;
       }
 
-      .header h1{
-        font-size:30px;
+      .header {
+        padding: 28px 24px;
+        border-radius: 16px;
       }
 
-      h2{
-        font-size:21px;
+      .header-title {
+        font-size: 22px;
+      }
+
+      .header-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 13px;
+      }
+
+      .section {
+        padding: 22px 18px;
+      }
+
+      .section-title h2 {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .header-title {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="page">
 
-  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+            <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2zm0-8h2v6h-2z"/>
+          </svg>
+        </div>
+        <div class="header-text">
+          <div class="header-app-name">Pregli · Lumina</div>
+          <h1 class="header-title">Política de Privacidad</h1>
+          <p class="header-subtitle">Información sobre el uso de tus datos</p>
+          <div class="header-badge">
+            <svg viewBox="0 0 24 24"><path d="M12 2L4 5v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V5l-8-3zm0 10.99h6c-.46 3.06-2.64 5.81-6 6.93V13H6V7.21l6-2.25v7.99z"/></svg>
+            Última actualización: Mayo 2026
+          </div>
+        </div>
+      </div>
+    </header>
 
-    <div class="header">
-      <h1>Lumina</h1>
-      <p>Política de Privacidad</p>
-      <p>Última actualización: Mayo 2026</p>
-    </div>
-
-    <h2>1. Información general</h2>
-    <p>
-      Lumina es una aplicación móvil desarrollada de forma independiente,
-      disponible para dispositivos Android e iOS. Su propósito es brindar
-      acceso a contenido religioso como la Biblia y el Himnario Adventista,
-      además de reflexiones espirituales en línea.
-    </p>
-
-    <h2>2. Responsable de la aplicación</h2>
-    <p>
-      Esta aplicación es de uso personal y no está asociada a una empresa.
-    </p>
-
-    <div class="contact-box">
-      <p><strong>Correo de contacto:</strong> construyendomimejorversion01@gmail.com</p>
-    </div>
-
-    <h2>3. Información que recopilamos</h2>
-    <p>
-      Lumina no recopila, almacena ni solicita información personal del usuario.
-    </p>
-
-    <p>La aplicación:</p>
-
-    <ul>
-      <li>No requiere registro ni inicio de sesión</li>
-      <li>No solicita nombre, correo electrónico ni teléfono</li>
-      <li>No accede a ubicación, contactos ni archivos del dispositivo</li>
-      <li>No realiza seguimiento de actividad personal</li>
-    </ul>
-
-    <h2>4. Servicios externos</h2>
-    <p>
-      Lumina utiliza una API alojada en un servidor propio mediante Railway y Node.js
-      para obtener reflexiones espirituales y contenido en línea.
-    </p>
-
-    <p>Este servicio:</p>
-
-    <ul>
-      <li>No identifica usuarios</li>
-      <li>No almacena información personal</li>
-      <li>Proporciona contenido público y libre</li>
-    </ul>
-
-    <h2>5. Notificaciones</h2>
-    <p>
-      La aplicación puede mostrar notificaciones locales directamente
-      en el dispositivo del usuario.
-    </p>
-
-    <ul>
-      <li>Las notificaciones se generan localmente</li>
-      <li>No dependen de servidores externos</li>
-      <li>No recopilan datos del usuario</li>
-      <li>No contienen rastreo ni analítica</li>
-    </ul>
-
-    <h2>6. Compartición de datos</h2>
-    <p>
-      Lumina no comparte información personal con terceros,
-      ya que la aplicación no recopila datos personales.
-    </p>
-
-    <h2>7. Seguridad</h2>
-    <p>
-      Aunque la aplicación no almacena información personal,
-      se aplican buenas prácticas de seguridad en los servicios utilizados
-      para proteger la integridad del contenido y del sistema.
-    </p>
-
-    <h2>8. Servicios de terceros</h2>
-    <p>
-      Lumina actualmente no utiliza servicios de publicidad,
-      analítica ni rastreo como:
-    </p>
-
-    <ul>
-      <li>Google Analytics</li>
-      <li>Firebase Analytics</li>
-      <li>Facebook SDK</li>
-      <li>Google AdMob</li>
-    </ul>
-
-    <h2>9. Derechos del usuario</h2>
-    <p>
-      Debido a que Lumina no recopila información personal,
-      no es necesario solicitar eliminación o acceso a datos.
-    </p>
-
-    <h2>10. Cambios a esta política</h2>
-    <p>
-      Esta Política de Privacidad puede actualizarse en el futuro
-      si se agregan nuevas funciones o servicios a la aplicación.
-      Los cambios serán publicados en esta misma página.
-    </p>
-
-    <h2>11. Contacto</h2>
-
-    <div class="contact-box">
+    <!-- 1 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">1</div>
+        <h2>Información general</h2>
+      </div>
       <p>
-        Si tienes preguntas relacionadas con esta Política de Privacidad,
-        puedes comunicarte a:
+        Lumina es una aplicación móvil desarrollada de forma independiente,
+        disponible para dispositivos Android e iOS. Su propósito es brindar
+        acceso a contenido religioso como la Biblia y el Himnario Adventista,
+        además de reflexiones espirituales en línea.
       </p>
-
-      <p><strong>📧 construyendomimejorversion01@gmail.com</strong></p>
     </div>
 
-    <div class="footer">
-      © 2026 Lumina
+    <!-- 2 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">2</div>
+        <h2>Responsable de la aplicación</h2>
+      </div>
+      <p>Esta aplicación es de uso personal y no está asociada a una empresa.</p>
+      <div class="contact-box">
+        <div class="contact-box-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-box-text">
+          <div class="contact-box-label">Correo de contacto</div>
+          <div class="contact-box-value">construyendomimejorversion01@gmail.com</div>
+        </div>
+      </div>
     </div>
+
+    <!-- 3 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">3</div>
+        <h2>Información que recopilamos</h2>
+      </div>
+      <p>Lumina <strong>no recopila, almacena ni solicita</strong> información personal del usuario.</p>
+      <p>La aplicación:</p>
+      <ul class="check-list">
+        <li>No requiere registro ni inicio de sesión</li>
+        <li>No solicita nombre, correo electrónico ni teléfono</li>
+        <li>No accede a ubicación, contactos ni archivos del dispositivo</li>
+        <li>No realiza seguimiento de actividad personal</li>
+      </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">4</div>
+        <h2>Servicios externos</h2>
+      </div>
+      <p>
+        Lumina utiliza una API alojada en un servidor propio mediante Railway y Node.js
+        para obtener reflexiones espirituales y contenido en línea.
+      </p>
+      <p>Este servicio:</p>
+      <ul class="check-list">
+        <li>No identifica usuarios</li>
+        <li>No almacena información personal</li>
+        <li>Proporciona contenido público y libre</li>
+      </ul>
+    </div>
+
+    <!-- 5 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">5</div>
+        <h2>Notificaciones</h2>
+      </div>
+      <p>La aplicación puede mostrar notificaciones locales directamente en el dispositivo del usuario.</p>
+      <ul class="check-list">
+        <li>Las notificaciones se generan localmente</li>
+        <li>No dependen de servidores externos</li>
+        <li>No recopilan datos del usuario</li>
+        <li>No contienen rastreo ni analítica</li>
+      </ul>
+    </div>
+
+    <!-- 6 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">6</div>
+        <h2>Compartición de datos</h2>
+      </div>
+      <p>
+        Lumina no comparte información personal con terceros,
+        ya que la aplicación no recopila datos personales.
+      </p>
+    </div>
+
+    <!-- 7 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">7</div>
+        <h2>Seguridad</h2>
+      </div>
+      <p>
+        Aunque la aplicación no almacena información personal,
+        se aplican buenas prácticas de seguridad en los servicios utilizados
+        para proteger la integridad del contenido y del sistema.
+      </p>
+    </div>
+
+    <!-- 8 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">8</div>
+        <h2>Servicios de terceros</h2>
+      </div>
+      <p>Lumina actualmente <strong>no utiliza</strong> servicios de publicidad, analítica ni rastreo como:</p>
+      <ul class="check-list">
+        <li>Google Analytics</li>
+        <li>Firebase Analytics</li>
+        <li>Facebook SDK</li>
+        <li>Google AdMob</li>
+      </ul>
+    </div>
+
+    <!-- 9 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">9</div>
+        <h2>Derechos del usuario</h2>
+      </div>
+      <p>
+        Debido a que Lumina no recopila información personal,
+        no es necesario solicitar eliminación o acceso a datos.
+      </p>
+    </div>
+
+    <!-- 10 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">10</div>
+        <h2>Cambios a esta política</h2>
+      </div>
+      <p>
+        Esta Política de Privacidad puede actualizarse en el futuro
+        si se agregan nuevas funciones o servicios a la aplicación.
+        Los cambios serán publicados en esta misma página.
+      </p>
+    </div>
+
+    <!-- 11 -->
+    <div class="section">
+      <div class="section-title">
+        <div class="section-number">11</div>
+        <h2>Contacto</h2>
+      </div>
+      <p>Si tienes preguntas relacionadas con esta Política de Privacidad, puedes comunicarte a:</p>
+      <div class="contact-box">
+        <div class="contact-box-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </div>
+        <div class="contact-box-text">
+          <div class="contact-box-label">Correo de contacto</div>
+          <div class="contact-box-value">construyendomimejorversion01@gmail.com</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 14H8v-2h8v2zm0-4H8v-2h8v2zm0-4H8V6h8v2z"/></svg>
+        </div>
+        <span class="footer-logo-name">Lumina · Pregli</span>
+      </div>
+      <p>© 2026 Lumina. Todos los derechos reservados.</p>
+    </footer>
 
   </div>
-
 </body>
 </html>
